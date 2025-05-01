@@ -35,7 +35,7 @@ public class VentaDialog extends JDialog {
         panel.add(txtNombre);
         panel.add(new JLabel("Código de Barras:"));
         panel.add(txtCodigo);
-        panel.add(new JLabel("Precio Unitario ($):"));
+        panel.add(new JLabel("Precio Unitario (Q):"));
         panel.add(txtPrecio);
         panel.add(new JLabel("Cantidad en Stock:"));
         panel.add(txtStock);

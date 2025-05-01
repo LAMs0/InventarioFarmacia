@@ -41,6 +41,7 @@
 
 ### Clonar el repositorio:
 ### -git clone https://github.com/LAMs0/InventarioFarmacia.git
+
 ### -cd farmacia-swing
 
 ## Compilar y ejecutar:
@@ -55,3 +56,6 @@
 ### -Los datos se mantienen en memoria durante la ejecución.
 ### -Se incluyen 5 productos de ejemplo al iniciar.
 ### -El sistema valida que no se ingresen precios o stocks negativos.
+
+## Link del video
+### https://drive.google.com/file/d/1gOFVDNcCqFj16ZPMKBH3FOuUsR4u_t-X/view?usp=sharing
