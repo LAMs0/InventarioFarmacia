@@ -40,7 +40,7 @@
 ## Ejecución
 
 ### Clonar el repositorio:
-### -git clone https://github.com/tu-usuario/farmacia-swing.git
+### -git clone https://github.com/LAMs0/InventarioFarmacia.git
 ### -cd farmacia-swing
 
 ## Compilar y ejecutar:
