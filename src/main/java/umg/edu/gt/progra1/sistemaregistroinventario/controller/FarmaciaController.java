@@ -8,52 +8,36 @@ import umg.edu.gt.progra1.sistemaregistroinventario.view.dialogs.MultiplesProduc
 import umg.edu.gt.progra1.sistemaregistroinventario.view.dialogs.VentaDialog;
 import umg.edu.gt.progra1.sistemaregistroinventario.view.dialogs.BuscarDialog;
 import umg.edu.gt.progra1.sistemaregistroinventario.view.panels.InventarioPanel;
-
 public class FarmaciaController {
-    private FarmaciaGUI view;
-    private InventarioFarmacia model;
+    private InventarioFarmacia inventario;
+    private static final String ARCHIVO = "inventario.txt";
 
-    public FarmaciaController(FarmaciaGUI view) {
-        this.view = view;
-        this.model = new InventarioFarmacia();
+    public FarmaciaController() {
+        inventario = new InventarioFarmacia();
+        inventario.cargarInventarioDesdeArchivo(ARCHIVO);
     }
 
-    public void cargarProductosEjemplo() {
-        ProductoDTO[] ejemplos = {
-                new ProductoDTO("Paracetamol 500mg", "P001", 5.99, 150),
-                new ProductoDTO("Ibuprofeno 400mg", "P002", 7.50, 80),
-                new ProductoDTO("Amoxicilina 250mg", "P003", 12.75, 45),
-                new ProductoDTO("Omeprazol 20mg", "P004", 9.25, 120),
-                new ProductoDTO("Aspirina 100mg", "P005", 4.50, 200)
-        };
-
-        for (ProductoDTO producto : ejemplos) {
-            model.agregarProducto(producto);
-        }
-        view.agregarMensaje("✅ Sistema iniciado con 5 productos de ejemplo");
+    public void registrarProducto(String nombre, String codigo, double precio, int stock) {
+        inventario.agregarProducto(new ProductoDTO(nombre, codigo, precio, stock));
     }
 
-    public void mostrarDialogoAgregar() {
-        new VentaDialog(view, model).setVisible(true);
+    public ProductoDTO consultarProducto(String codigo) {
+        return inventario.buscarProductoPorCodigo(codigo);
     }
 
-    public void mostrarDialogoBuscar() {
-        new BuscarDialog(view, model).setVisible(true);
+    public ProductoDTO[] listarProductos() {
+        return inventario.getProductos();
     }
 
-    public void mostrarInventario() {
-        new InventarioPanel(view, model).mostrar();
+    public boolean venderProducto(String codigo, int cantidad) {
+        return inventario.venderProducto(codigo, cantidad);
     }
 
-    public void mostrarDialogoVender() {
-        new VentaDialog(view, model).setVisible(true);
+    public boolean actualizarPrecio(String codigo, double precio) {
+        return inventario.actualizarPrecio(codigo, precio);
     }
 
-    public void mostrarDialogoActualizar() {
-        new ActualizarPrecioDialog(view, model).setVisible(true);
-    }
-
-    public void mostrarDialogoMultiplesProductos() {
-        new MultiplesProductosDialog(view, model).setVisible(true);
+    public void guardar() {
+        inventario.guardarInventarioEnArchivo(ARCHIVO);
     }
 }

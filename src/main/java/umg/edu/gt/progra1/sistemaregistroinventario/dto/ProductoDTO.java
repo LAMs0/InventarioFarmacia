@@ -1,6 +1,8 @@
 package umg.edu.gt.progra1.sistemaregistroinventario.dto;
 
-public class ProductoDTO {
+import java.io.Serializable;
+
+public class ProductoDTO implements Serializable {
 
     private String nombre;
     private String codigoBarras;
